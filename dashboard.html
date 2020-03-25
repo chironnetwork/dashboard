@@ -4,13 +4,13 @@
   <html lang="en">
     <head>
       <meta charset="utf-8">
-      <title>The Sentinel AI</title>
+      <title>The Chiron Network</title>
       <meta http-equiv="X-UA-Compatible" content="IE=Edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <link rel="shortcut icon" href="/icons/favicon.ico">
-      <meta name="apple-mobile-web-app-title" content="The Sentinel AI">
-      <meta name="application-name" content="The Sentinel AI">
+      <meta name="apple-mobile-web-app-title" content="The Chiron Network">
+      <meta name="application-name" content="The Chiron Network">
       <meta name="msapplication-TileColor" content="#ffffff">
       <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
       <meta name="msapplication-config" content="/icons/browserconfig.xml">
@@ -57,7 +57,7 @@
                   <img class="navbar-pic" src="icons/favicon.png" alt="Lockdown Icon">
                 </div>
                 <div class="navbar-group">
-                  <div class="navbar-title">The Sentinel AI</div>
+                  <div class="navbar-title">The Chiron Network</div>
                 </div>
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
               <div class="collapse navbar-collapse" id="navbarDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="/">Learn</a>
+                    <a class="nav-link" href="/">About Chiron</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active nav-link-drop" href="#">
@@ -80,13 +80,25 @@
                         <div class="col-md-6">
                           <a class="nav-group" href="/dashboard.html">
                             <div class="nav-title">Dashboard</div>
-                            <div class="nav-text">Your one stop to decentralized training.</div>
+                            <div class="nav-text">Feel ill? Enter your symptoms and check if you need to see a doctor.</div>
                           </a>
                         </div>
                         <div class="col-md-6">
                           <a class="nav-group" href="/listnodes.html">
-                            <div class="nav-title">Show Nodes</div>
-                            <div class="nav-text">View the nodes available in the network for training.</div>
+                            <div class="nav-title">Donate to Hostipals</div>
+                            <div class="nav-text">Provide Hostipals with monetory relief directly, to help combat this pandemic.</div>
+                          </a>
+                        </div>
+                        <div class="col-md-6">
+                          <a class="nav-group" href="/dashboard.html">
+                            <div class="nav-title">Contribute Resources</div>
+                            <div class="nav-text">Contribute spare computing power or datasets towards research.</div>
+                          </a>
+                        </div>
+                        <div class="col-md-6">
+                          <a class="nav-group" href="/listnodes.html">
+                            <div class="nav-title">View Contributors</div>
+                            <div class="nav-text">View the devices connected to the network, helping power Chiron.</div>
                           </a>
                         </div>
                       </div>
@@ -112,26 +124,51 @@
                     <div class="col-md-6 mb-5 mb-lg-0">
                       <div class="wrap">
                         <div class="theme" style="color: #0189D1">Let's Get Started.</div>
-                        <div class="title title-2">Just drop your model here.</div>
-                        <div class="text">You can download a <i>number detection model</i> (MNIST) <a class="link" href="model2.h5">here</a> to test it out.</div>
+                        <div class="title title-2">Tell us how you feel.</div>
+                        <div class="text">Currently trained on over 4000+ samples taken across the globe.</div>
 
-                        <form onsubmit="modelhandle(event)">
-                            <input type="file" name="file" class="filepond" id="filepond">
+                        <form onsubmit="checkResult(event)">
 
-                            <div class="slidecontainer">
-                              <p>Choose the number of <b>training rounds</b>: <span id="rndCntLabel"></span></p>
-                              <input type="range" min="1" max="9" value="3" class="slider" id="rndCount">
-                            </div><br><br>
-                            <button class="btn btn-primary" id="submit" >Start Learning</button>
-                        </form>
+                            <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
+                              <input class="form-control" type="number" placeholder="Fever Temperature ?" required="" id="fever">
+                            </div>
+                            <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
+                              <input class="form-control" type="number" placeholder="Feeling ill since ?" required="" id="feverDays">
+                            </div>
+                            <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
+                              <input class="form-control" type="number" placeholder="Your Age ?" required="" id="age">
+                            </div>
+                            <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
+                              <select id="tiredness" name="tiredness" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
+                                <option value="-1">No tiredness</option>
+                                <option value="0">Mild tiredness</option>
+                                <option value="1">Severe tiredness</option>
+                              </select>
+                            </div>
+                            <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
+                              <select id="cough" name="cough" class="form-control" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
+                                <option value="-1">No cough</option>
+                                <option value="0">Mild cough</option>
+                                <option value="1">Severe cough</option>
+                              </select>
+                            </div>
 
+                            <button class="btn btn-primary" id="submit" >Let's check 🤞</button>
+                          </form>
                       </div>
                     </div>
-                    <div class="col-md-6"><div class="theme" style="color: #0189D1" id="tasksTitle">Forming the pixels on your screen.</div>
-                      <figure class="preview" style="display: none;" id="noTasks">
-                        <img class="preview-pic" src="img/landing/nomodels.png" style="max-height: 400px;">
-                      </figure>
-                      <div class="vacancy" id="userTasks"></div>
+                    <div class="col-md-6">
+                      <div class="theme" style="color: #0189D1">Global Coronavirus Stats</div>
+                      <div class="title title-1 mb-2" id="statCases">Fetching..</div>
+                      <div class="text">Cases</div>
+                      <div class="title title-1 mb-2" id="statDeaths">Fetching..</div>
+                      <div class="text">Deaths</div>
+                      <div class="title title-1 mb-2" id="statRecovered">Fetching..</div>
+                      <div class="text">Recovered</div>
+                      <div class="card" style="min-height: fit-content !important;background-color: #38EF7D;">
+                        <div class="title title-3">Donate to Hostipals</div>
+                        <div class="card-text">Help combat this Pandemic</div>
+                      </div>
                     </div>
                   </div>
             </div>
@@ -147,35 +184,6 @@
       <script src="js/dashboard.js"></script>
       <script src="js/index.js"></script>
 
-      <script src="js/lib/filepond-plugin-file-validate-size.js"></script>
-      <script src="js/lib/filepond-plugin-file-encode.js"></script>
-      <script src="js/lib/filepond.js"></script>
-
-      <script>
-      FilePond.registerPlugin(FilePondPluginFileValidateSize);
-      FilePond.registerPlugin(FilePondPluginFileEncode);
-      FilePond.setOptions({
-          server: {
-              url: COORDINATOR_NODE,
-              process: {
-                  url: upload_ep,
-                  method: 'POST',
-                  withCredentials: false,
-                  timeout: 120000,
-                  onload: null,
-                  onerror: (error) => {
-                    alert(error);
-                  },
-                  ondata: null
-              }
-          }
-      });
-      const pond = FilePond.create( document.getElementById("filepond"), {
-          maxFiles: 1,
-          maxFileSize :'10MB'
-        });
-
-      </script>
     </body>
     <script src="js/lib/darkmode-js.min.js"></script>
     <script>
