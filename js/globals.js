@@ -4,6 +4,31 @@ const contractABI=[
 		"inputs": [
 			{
 				"internalType": "string",
+				"name": "_orgName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_fundName",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_orgAdress",
+				"type": "address"
+			}
+		],
+		"name": "createFund",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "_modelHash",
 				"type": "string"
 			},
@@ -18,6 +43,27 @@ const contractABI=[
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_fundID",
+				"type": "uint256"
+			}
+		],
+		"name": "donateToFund",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"anonymous": false,
@@ -104,6 +150,82 @@ const contractABI=[
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newOwner",
+				"type": "address"
+			}
+		],
+		"name": "updateOwner",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "fundCnt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Funds",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "orgID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "orgName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "fundName",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "fundAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "donationAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "donationCnt",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -195,6 +317,36 @@ const contractABI=[
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "totalDonationAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalDonationCnt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"internalType": "address",
@@ -220,7 +372,7 @@ const contractABI=[
 		"type": "function"
 	}
 ];
-const contractAddress = "0xA7F599AeE2dd3AB3a29D54820a9Ee12938cdb2fC";
+const contractAddress = "0x62C281318746C24d4C97660b8478bD8987B73550";
 
 const COORDINATOR_NODE = "https://chiron-coor.herokuapp.com/";
 const TESTER_NODE = "https://chiron-tester.herokuapp.com/";

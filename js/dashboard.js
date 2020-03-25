@@ -20,9 +20,9 @@ async function updateStats(){
         return response.json();
     })
     .then((data) => {
-        document.getElementById('statCases').innerText = data['cases'];
-        document.getElementById('statDeaths').innerText = data['deaths'];
-        document.getElementById('statRecovered').innerText = data['recovered'];
+        document.getElementById('statCases').innerText = addCommas(data['cases']);
+        document.getElementById('statDeaths').innerText = addCommas(data['deaths']);
+        document.getElementById('statRecovered').innerText = addCommas(data['recovered']);
         console.log(data);
     });
 }
