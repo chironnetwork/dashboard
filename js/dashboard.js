@@ -46,33 +46,41 @@ function checkResult(event){
     let cough = parseInt(document.getElementById('cough').value);
 
     let testURL = `${TESTER_NODE}?fever=${fever}&feverDays=${feverDays}&age=${age}&tiredness=${tiredness}&cough=${cough}`
-    console.log(testURL);
-    xhr.open("POST", testURL, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onreadystatechange = function(e) {
-        if(xhr['status'] == 200 && xhr['readyState'] == 4){
+    fetch(testURL)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data['result']);
+        const prob = parseFloat(data['result']).toFixed(2);
 
-            console.log(xhr);
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Your Model has Started Training 🗺',
-            //     html: `You can now track you Model's progress.`,
-            //     backdrop: `rgba(0,0,123,0.4)
-            //         url("/img/landing/nyan-cat.gif")
-            //         left top
-            //         no-repeat
-            //     `,
-            //     confirmButtonColor: '#0016b9',
-            //     confirmButtonText: 'Track Progress'
-            // }).then((result) => {
-            //     if (result.value) {
-            //         location = `/tasks.html?taskID=${taskID}`;
-            //     }
-            // });
-            submitBtn.innerText = "Let's check 🤞";
-            submitBtn.disabled = false;
+        if (prob>=70){
+            Swal.fire({
+                icon: 'warning',
+                title: `Probability of Infection: ${prob}%`,
+                text: `There is a severe chance that you may have coronavirus.`,
+                footer: '<a target="_blank" href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Get Help 🥺</a>'
+              })
         }
-    }
-    xhr.send();
+        else if (prob>=50){
+            Swal.fire({
+                icon: 'warning',
+                title: `Probability of Infection: ${prob}%`,
+                text: `There is a good chance that you may have coronavirus.`,
+                footer: '<a target="_blank" href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Get Help 🥺</a>'
+              })
+        }
+        else {
+            Swal.fire({
+                icon: 'warning',
+                title: `Probability of Infection: ${prob}%`,
+                text: 'There is a slim chance you have coronavirus although you should sill self quarantine for 2 weeks.',
+                footer: '<a target="_blank" href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Get Help 🥺</a>'
+              })
+        }
+
+        submitBtn.innerText = "Let's check 🤞";
+        submitBtn.disabled = false;
+    });
 
 }

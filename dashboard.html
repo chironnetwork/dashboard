@@ -90,13 +90,13 @@
                           </a>
                         </div>
                         <div class="col-md-6">
-                          <a class="nav-group" href="/dashboard.html">
+                          <a class="nav-group" href="/contribute.html">
                             <div class="nav-title">Contribute Resources</div>
                             <div class="nav-text">Contribute spare computing power or datasets towards research.</div>
                           </a>
                         </div>
                         <div class="col-md-6">
-                          <a class="nav-group" href="/listnodes.html">
+                          <a class="nav-group" href="/viewcontributions.html">
                             <div class="nav-title">View Contributors</div>
                             <div class="nav-text">View the devices connected to the network, helping power Chiron.</div>
                           </a>
@@ -130,7 +130,7 @@
                         <form onsubmit="checkResult(event)">
 
                             <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
-                              <input class="form-control" type="number" placeholder="Fever Temperature ?" required="" id="fever">
+                              <input class="form-control" type="number" placeholder="Fever Temperature ? (in °F)" required="" id="fever">
                             </div>
                             <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
                               <input class="form-control" type="number" placeholder="Feeling ill since ?" required="" id="feverDays">
@@ -139,14 +139,14 @@
                               <input class="form-control" type="number" placeholder="Your Age ?" required="" id="age">
                             </div>
                             <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
-                              <select id="tiredness" name="tiredness" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
+                              <select id="tiredness" name="tiredness" required="" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
                                 <option value="-1">No tiredness</option>
                                 <option value="0">Mild tiredness</option>
                                 <option value="1">Severe tiredness</option>
                               </select>
                             </div>
                             <div class="row form-group" style="max-width: 500px;margin-top: 5px;">
-                              <select id="cough" name="cough" class="form-control" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
+                              <select id="cough" name="cough"  required="" class="form-control" style="height: 48px; padding: 12px 15px; font-family: 'Poppins',sans-serif; font-size: 18px; width: 100%;">
                                 <option value="-1">No cough</option>
                                 <option value="0">Mild cough</option>
                                 <option value="1">Severe cough</option>
@@ -165,9 +165,9 @@
                       <div class="text">Deaths</div>
                       <div class="title title-1 mb-2" id="statRecovered">Fetching..</div>
                       <div class="text">Recovered</div>
-                      <div class="card" style="min-height: fit-content !important;background-color: #38EF7D;">
+                      <div class="card" style="cursor:pointer;min-height: fit-content !important;  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);" onclick="window.location='/donate.html'">
                         <div class="title title-3">Donate to Hostipals</div>
-                        <div class="card-text">Help combat this Pandemic</div>
+                        <div class="card-text">Help combat this Pandemic 💪</div>
                       </div>
                     </div>
                   </div>
