@@ -1,9 +1,9 @@
 {
- "name": "The Sentinel AI",
+ "name": "The Chiron Network",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#2c76ff",
-  "short_name": "sentinel.ai",
+  "theme_color": "#38EF7D",
+  "short_name": "Chiron",
   "background_color": "#fff",
   "orientation": "any",
  "icons": [
