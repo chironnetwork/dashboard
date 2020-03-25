@@ -11,7 +11,7 @@ async function init() {
         document.getElementById("userBalance").innerText = parseFloat(web3.fromWei(result, "ether")).toFixed(2)+" ETH";
     })
 
-    await refreshUI();
+    refreshUI();
     document.getElementById("refresh").addEventListener("click", reload);
 }
 

@@ -1,5 +1,5 @@
-SentinelContract = undefined;
-Sentinel = undefined;
+ChironContract = undefined;
+Chiron = undefined;
 
 window.addEventListener('load', async () => {
 
@@ -20,8 +20,8 @@ window.addEventListener('load', async () => {
                     }
                 });
 
-                SentinelContract = web3.eth.contract(contractABI);
-                Sentinel = SentinelContract.at(contractAddress);
+                ChironContract = web3.eth.contract(contractABI);
+                Chiron = ChironContract.at(contractAddress);
 
                 init();
 
@@ -43,8 +43,8 @@ window.addEventListener('load', async () => {
             }
         });
         window.web3 = new Web3(web3.currentProvider);
-        SentinelContract = new web3.eth.contract(contractABI);
-        Sentinel = SentinelContract.at(contractAddress);
+        ChironContract = new web3.eth.contract(contractABI);
+        Chiron = ChironContract.at(contractAddress);
 
         init();
     } else {

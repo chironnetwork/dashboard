@@ -15,6 +15,8 @@ async function init() {
 }
 
 async function updateStats(){
+    document.getElementById('totDon').innerText = await getDonationAmount();
+
     fetch('https://corona.lmao.ninja/all')
     .then((response) => {
         return response.json();
@@ -25,6 +27,7 @@ async function updateStats(){
         document.getElementById('statRecovered').innerText = addCommas(data['recovered']);
         console.log(data);
     });
+
 }
 
 async function refreshUI(){
@@ -83,4 +86,21 @@ function checkResult(event){
         submitBtn.disabled = false;
     });
 
+}
+
+async function getDonationAmount(_orgID) {
+
+    let promise = new Promise((res, rej) => {
+
+        Chiron.totalDonationAmount((error, result)=>{
+            if (!error)
+                res(result);
+            else{
+                rej(0);
+            }
+        });
+
+    });
+    let result = await promise;
+    return web3.fromWei(parseInt(result));
 }
